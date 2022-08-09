@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, Heading, VStack, FormControl, Input, Box, Button, Link } from 'native-base';
+import { Text, Heading, VStack, FormControl, Input, Box } from 'native-base';
+
+import Button from '../ui/Button';
+import Link from '../ui/Link';
 
 const LoginScreen = function () {
     return (
@@ -20,7 +23,7 @@ const LoginScreen = function () {
                     <Input />
                 </FormControl>
                 <Button>Submit</Button>
-                <Button>Login with Linkedin</Button>
+                <Button variant="outlined">Login with Linkedin</Button>
                 <Link>Not yet a member? Sign up!</Link>
             </VStack>
         </Box>
