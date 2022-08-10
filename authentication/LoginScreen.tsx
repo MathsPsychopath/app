@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, Heading, VStack, FormControl, Input, Box, HStack } from 'native-base';
+import { Text, Heading, VStack, FormControl, Input, Box, HStack, Icon } from 'native-base';
 
 import Button from '../ui/Button';
 import Link from '../ui/Link';
 import { SvgUri } from 'react-native-svg';
+import { AntDesign } from '@expo/vector-icons';
 
 const LoginScreen = function () {
     return (
@@ -24,41 +25,30 @@ const LoginScreen = function () {
                     <Input />
                 </FormControl>
                 <Button>Submit</Button>
-                <Button variant="outlined" position="relative">
-                    <PositionedButtonContent
-                        uri="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                        left="-100px"
-                    >
-                        Login with Google
-                    </PositionedButtonContent>
-                </Button>
-                <Button variant="outlined" position="relative">
-                    <PositionedButtonContent
-                        uri="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
-                        left="-95px"
-                    >
-                        Login with LinkedIn
-                    </PositionedButtonContent>
-                </Button>
+                <Box position="relative">
+                    <AbsoluteIcon uri="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                    <Button variant="outlined">Login with Google</Button>
+                </Box>
+                <Box position="relative">
+                    <AbsoluteIcon uri="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" />
+                    <Button variant="outlined">Login with LinkedIn</Button>
+                </Box>
+                <Box position="relative">
+                    <Box position="absolute" left="4" top="2.5">
+                        <AntDesign name="apple1" size={24} color="black" />
+                    </Box>
+                    <Button variant="outlined">Login with Apple</Button>
+                </Box>
                 <Link>Not yet a member? Sign up!</Link>
             </VStack>
         </Box>
     );
 };
 
-type PositionedProps = {
-    uri: string;
-    left: string;
-    children: React.ReactNode;
-};
-
-const PositionedButtonContent = ({ uri, left, children }: PositionedProps) => (
-    <HStack>
-        <Box position="absolute" left={left}>
-            <SvgUri uri={uri} width={25} height={25} />
-        </Box>
-        <Text>{children}</Text>
-    </HStack>
+const AbsoluteIcon = ({ uri }: { uri: string }) => (
+    <Box position="absolute" left="4" top="2.5">
+        <SvgUri width={25} height={25} uri={uri} />
+    </Box>
 );
 
 export default LoginScreen;
